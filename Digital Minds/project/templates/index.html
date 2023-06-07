@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+<h1 class="center">Invites</h1>
+<table class = "table">
+    <thead>
+        <tr>
+            <th scope="col">Sender</th>
+            <th scope="col">Message</th>
+            <th scope="col">Room Code:</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date (New to Old)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in database %}
+            {% set room = row["room"] %}
+            <tr>
+                <td>{{ row["sender_name"] }}</td>
+                <td>{{ row["message"] }}</td>
+                <td>
+                    <form action="/" method="post">
+                        <input type="hidden" id="code" name="code" value="{{ room }}">
+                        <button class="btn btn-primary" id="bcode" name="bcode" type="submit">{{ room }}</button>
+                    </form>
+                </td>
+                <td>
+                    {{ row["status"] }}
+                    <form action="/" method="post">
+                        <input type="hidden" id="delete" name="delete" value="{{ room }}">
+                        <button class="btn btn-primary" id="bdelete" name="bdelete" type="submit">Delete this invite</button>
+                    </form>
+                </td>
+                <td>{{ row["date"] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

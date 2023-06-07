@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+{% block main %}
+    <h1>Edit Profile</h1>
+    <br>
+    <h3>Username: {{ username }}</3>
+    <form action="/edit" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="name" name="name" placeholder="Name" type="text" value="{{ name }}">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="age" name="age" placeholder="Age" type="number" min="0" value="{{ age }}">
+        </div>
+        <select name="gender">
+            <option value="" disbaled selected hidden>gender</option>
+            <option value="math">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <h1></h1>
+        <div class="mb-3">
+            <input calass="form-control mx-auto w-auto" id="bio" name="bio" placeholder=" Bio" type="text" style="width: 600px; height: 150px;" value="{{ bio }}">
+        </div>
+        <button class="btn btn-primary" type="submit">Save Changes</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Chat
+{% endblock %}
+
+{% block main %}
+<form action="/chat" method="post">
+  <h3>Enter The Chat Room</h3>
+  <div>
+    <h4>Name: {{name}}</h4>
+  </div>
+  <div class="mb-3" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+    <input class="form-control w-auto" type="text" placeholder="Room Code" name="code" value="{{code}}" />
+    <button class="btn btn-primary" type="submit" name="join">Join a Room</button>
+  </div>
+    <h5>OR</h5>
+  <div class="mb-3">
+    <button class="btn btn-primary" type="submit" name="create" class="create-btn">Create a Room</button>
+  </div>
+  <hr>
+  <h3>Invite Friends</h3>
+  <div class="mb-3" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+    <h5>Friend:  </h5>
+    <select name="f">
+      {% if fusername is not none and fusername != "" %}
+        <option value="{{ friend_name }}" selected>{{ fusername }}</option>
+      {% endif %}
+      {% for word in friend_names %}
+        {% if fusername != word and word != "" %}
+          <option value="{{word}}">{{word}}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary" type="submit" name="invite" class="create-btn">Send Invite and Create Room</button>
+  </div>
+</form>
+
+{% endblock %}

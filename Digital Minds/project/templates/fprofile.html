@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+{% block main %}
+    <h1>Profile</h1>
+    <br>
+    <h3>Username: {{ username }}</3>
+    <h3>Name: {{ name }}</3>
+    <h3>Age: {{ age }}</3>
+    <h3>Gender: {{ gender }}</3>
+    <h3>Bio: {{ bio }}</3>
+    <form action="/friend" method="post">
+        <button class="btn btn-primary" type="submit">{{ button }}</button>
+        <input type="hidden" name="fusername" value="{{ username }}">
+    </form>
+
+{% endblock %}
