@@ -1,6 +1,5 @@
 import os
 
-import urllib.parse
 from functools import wraps
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, url_for, request, session
