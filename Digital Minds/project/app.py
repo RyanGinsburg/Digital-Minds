@@ -19,10 +19,12 @@ app = Flask(__name__)
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SECRET_KEY"] = "halkhflakshfl"
-socketio = SocketIO(app)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+app.config["SESSION_FILE_DIR"] = os.environ.get("SESSION_FILE_DIR", "Digital Minds/project/flask_session")
 Session(app)
+
+socketio = SocketIO(app)
 
 rooms = {}
 
