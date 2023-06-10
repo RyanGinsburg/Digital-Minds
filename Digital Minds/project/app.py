@@ -644,7 +644,7 @@ def message(data):
             content = {"name": name, "message": data["data"]}
             send(content, to=room)
             rooms[room]["messages"].append(content)
-            print(f"{name} said: {data['data']}")
+            print(name + " said: " + data['data'])
     else:
         return redirect("/login")
 
