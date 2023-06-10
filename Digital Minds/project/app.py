@@ -18,10 +18,11 @@ app = Flask(__name__)
 
 
 # Configure session to use filesystem (instead of signed cookies)
-app.config["SECRET_KEY"] = "halkhflakshfl"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "default_secret_key")
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SESSION_FILE_DIR"] = os.environ.get("SESSION_FILE_DIR", "Digital Minds/project/flask_session")
+
 Session(app)
 
 socketio = SocketIO(app)
@@ -69,36 +70,6 @@ def login_required(f):
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
-
-
-def lookup(symbol):
-    """Look up quote for symbol."""
-
-    # Contact API
-    try:
-        api_key = os.environ.get("API_KEY")
-        url = f"https://cloud.iexapis.com/stable/stock/{urllib.parse.quote_plus(symbol)}/quote?token={api_key}"
-        response = requests.get(url)
-        response.raise_for_status()
-    except requests.RequestException:
-        return None
-
-    # Parse response
-    try:
-        quote = response.json()
-        return {
-            "name": quote["companyName"],
-            "price": float(quote["latestPrice"]),
-            "symbol": quote["symbol"]
-        }
-    except (KeyError, TypeError, ValueError):
-        return None
-
-
-def usd(value):
-    """Format value as USD."""
-    return f"${value:,.2f}"
-
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///project.db")
@@ -720,7 +691,6 @@ def disconnect():
         app.run(host="0.0.0.0",  port=5000)
         socketio.run(app, debug=True)
         redirect("/")
-
 
 
 
