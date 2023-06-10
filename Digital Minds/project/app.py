@@ -1,5 +1,5 @@
 import os
-import requests
+
 import urllib.parse
 from functools import wraps
 from cs50 import SQL
