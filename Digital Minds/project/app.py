@@ -1,4 +1,5 @@
 import os
+import datetime
 from cs50 import SQL
 from functools import wraps
 from flask import Flask, flash, redirect, render_template, url_for, request, session
@@ -8,7 +9,7 @@ import random
 from string import ascii_uppercase
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
-import datetime
+
 
 
 # API KEY: export API_KEY=pk_06bfd2c6157948b2a9751c1e2bcc1f69
