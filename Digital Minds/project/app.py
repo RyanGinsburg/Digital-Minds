@@ -28,7 +28,10 @@ socketio = SocketIO(app)
 
 rooms = {}
 
-currently_works = ""
+# Configure CS50 Library to use SQLite database
+db = SQL("sqlite:///project.db")
+redirect("/")
+
 
 def generate_unique_code(length):
     while True:
@@ -70,9 +73,6 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-# Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///project.db")
-redirect("/")
 
 @app.after_request
 def after_request(response):
@@ -643,7 +643,8 @@ def message(data):
             content = {"name": name, "message": data["data"]}
             send(content, to=room)
             rooms[room]["messages"].append(content)
-            print(name + " said: " + data['data'])
+            print(f"{name} said: {data['data']})")
+
     else:
         return redirect("/login")
 
@@ -664,7 +665,7 @@ def connect(auth):
     join_room(room)
     send({"name": name, "message": "has entered the room"}, to=room)
     rooms[room]["members"] += 1
-    print(name + " joined room " + room)
+    print(f"{name} joined room {room}")
 
 
 @socketio.on("disconnect")
@@ -683,7 +684,7 @@ def disconnect():
             return redirect("/chat")
 
     send({"name": name, "message": "has left the room"}, to=room)
-    print(name + " has left the room " + room)
+    print(f"{name} has left the room {room}")
 
     if __name__ == "__main__":
         app.run(host="0.0.0.0",  port=5000)
