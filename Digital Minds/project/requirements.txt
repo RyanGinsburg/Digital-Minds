@@ -23,6 +23,7 @@ compare50==1.2.6
 contourpy==1.0.7
 cryptography==41.0.1
 cs50==9.2.5
+CS50-VSIX-Client @ file:///opt/cs50/extensions/cs50vsix-client
 cssselect2==0.7.0
 cycler==0.11.0
 docopt==0.6.2
@@ -101,3 +102,7 @@ websockets==11.0.3
 Werkzeug==2.3.4
 yarg==0.1.9
 zopfli==0.2.2
+cs50
+Flask
+Flask-Session
+requests
