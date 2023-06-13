@@ -1,14 +1,13 @@
 import os
 import datetime
-from cs50 import SQL
-from functools import wraps
-from flask import Flask, flash, redirect, render_template, url_for, request, session
-from flask_socketio import join_room, leave_room, send, SocketIO
-from flask_session import Session
-import random
-from string import ascii_uppercase
-from tempfile import mkdtemp
-from werkzeug.security import check_password_hash, generate_password_hash
+import functools
+import cs50
+import flask
+import flask_socketio
+import flask_session
+import string
+import tempfile
+import werkzeug.security
 
 
 
