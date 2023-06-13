@@ -24,7 +24,7 @@
     <h5>Friend:  </h5>
     <select name="f">
       {% if fusername is not none and fusername != "" %}
-        <option value="{{ friend_name }}" selected>{{ fusername }}</option>
+        <option value="{{ fusername }}" selected>{{ fusername }}</option>
       {% endif %}
       {% for word in friend_names %}
         {% if fusername != word and word != "" %}
