@@ -29,7 +29,7 @@ docutils==0.16
 EditorConfig==0.12.3
 Flask==2.2.5
 Flask-Session==0.5.0
-Flask-SocketIO==4.38.0
+Flask-SocketIO==5.3.4
 fonttools==4.39.4
 greenlet==2.0.2
 gunicorn==20.1.0
