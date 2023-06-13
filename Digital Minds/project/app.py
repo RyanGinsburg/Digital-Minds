@@ -1,15 +1,16 @@
 import os
-import datetime
-import functools
-import cs50
-import flask
-import Flask
-import flask_socketio
-import flask_session
-import string
-import tempfile
-import werkzeug.security
 
+from functools import wraps
+
+from flask import Flask, flash, redirect, render_template, url_for, request, session
+from flask_socketio import join_room, leave_room, send, SocketIO
+from flask_session import Session
+import random
+from string import ascii_uppercase
+from tempfile import mkdtemp
+from werkzeug.security import check_password_hash, generate_password_hash
+import datetime
+from cs50 import SQL
 
 
 # API KEY: export API_KEY=pk_06bfd2c6157948b2a9751c1e2bcc1f69
