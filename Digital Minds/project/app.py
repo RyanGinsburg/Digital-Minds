@@ -3,7 +3,7 @@ import os
 
 from functools import wraps
 
-from flask import Flask, flash, redirect, render_template, url_for, request, session
+from flask import flash, redirect, render_template, url_for, request, session, Flask
 from flask_socketio import join_room, leave_room, send, SocketIO
 from flask_session import Session
 import random
